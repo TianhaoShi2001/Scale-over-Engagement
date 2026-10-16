@@ -1,0 +1,105 @@
+# Column roles for the synthetic tables.
+# The manuscript's symbols are in parentheses. Sample size and calendars
+# differ; see data/DATA.md.
+
+creator_pool:
+  treated: "1 = AIGC-adopting creator"
+  exact: [category, city, brand_tier]
+  numeric:
+    uploads_14d: "uploads in the 14 days before adoption"
+    uploads_60d: "uploads in the 60 days before adoption"
+    plays_14d: "plays received, 14 days"
+    plays_60d: "plays received, 60 days"
+    watch_time_14d: "watch time received, 14 days"
+    watch_time_60d: "watch time received, 60 days"
+    followers: "follower count"
+  outcomes:
+    video_volume: "creation volume during the observation period"
+    total_valid_views: "aggregate valid-view count"
+    total_full_views: "aggregate full-view count"
+
+consumer_pool:
+  treated: "1 = interaction with platform-labeled AIGC"
+  exact: [gender, city, category, time_of_day, upload_week]
+  numeric:
+    age: "user age"
+    duration_seconds: "video duration in seconds; also the caliper variable"
+    plays_labeled_14d: "user plays of platform-labeled AIGC, 14 days"
+    plays_labeled_60d: "user plays of platform-labeled AIGC, 60 days"
+    plays_unlabeled_14d: "user plays of unlabeled content, 14 days"
+    plays_unlabeled_60d: "user plays of unlabeled content, 60 days"
+    watch_time_labeled_14d: "user watch time of platform-labeled AIGC, 14 days"
+    watch_time_labeled_60d: "user watch time of platform-labeled AIGC, 60 days"
+    watch_time_unlabeled_14d: "user watch time of unlabeled content, 14 days"
+    watch_time_unlabeled_60d: "user watch time of unlabeled content, 60 days"
+    creator_uploads_14d: "creator uploads before this video, 14 days"
+    creator_uploads_60d: "creator uploads before this video, 60 days"
+    creator_plays_14d: "creator plays received, 14 days"
+    creator_plays_60d: "creator plays received, 60 days"
+    creator_watch_time_14d: "creator watch time received, 14 days"
+    creator_watch_time_60d: "creator watch time received, 60 days"
+    creator_followers: "creator follower count"
+  outcomes:
+    early_retention: "early-retention rate"
+    valid_view_rate: "valid-view rate"
+    full_view_rate: "full-view rate"
+    view_fraction: "normalized view fraction"
+  caliper: "absolute difference in duration_seconds at most 3 seconds in the main specification"
+
+video_pool:
+  treated: "1 = platform-labeled AIGC"
+  exact: [category, city, upload_week]
+  numeric:
+    uploads_14d: "creator uploads before this video, 14 days"
+    uploads_60d: "creator uploads before this video, 60 days"
+    plays_14d: "creator plays received, 14 days"
+    plays_60d: "creator plays received, 60 days"
+    watch_time_14d: "creator watch time received, 14 days"
+    watch_time_60d: "creator watch time received, 60 days"
+    followers: "creator follower count"
+  outcomes:
+    exposure_31d: "31-day cumulative exposure"
+    days_to_90: "days to reach 90% of 31-day cumulative exposure"
+  caliper: "none"
+
+algorithm_pool:
+  treated: "1 = population-feedback distribution; 0 = individual-feedback"
+  exact: [city, gender]
+  numeric:
+    age: "consumer age"
+    plays_labeled_14d: "plays of platform-labeled AIGC, 14 days"
+    plays_labeled_60d: "plays of platform-labeled AIGC, 60 days"
+    plays_unlabeled_14d: "plays of unlabeled content, 14 days"
+    plays_unlabeled_60d: "plays of unlabeled content, 60 days"
+    watch_time_labeled_14d: "watch time of platform-labeled AIGC, 14 days"
+    watch_time_labeled_60d: "watch time of platform-labeled AIGC, 60 days"
+    watch_time_unlabeled_14d: "watch time of unlabeled content, 14 days"
+    watch_time_unlabeled_60d: "watch time of unlabeled content, 60 days"
+  outcomes:
+    labeled_exposure_share: "share of total exposures allocated to platform-labeled AIGC"
+    share_week_1: "same share over 1 week"
+    share_week_2: "same share over 2 weeks"
+    share_week_4: "same share over 4 weeks"
+    share_week_8: "same share over 8 weeks"
+
+daily_panel:
+  date: "synthetic day, starting 2024-06-01"
+  labeled_supply: "s_t^a, platform-labeled AIGC upload count"
+  unlabeled_supply: "s_t^u, unlabeled-content upload count"
+  first_day_median_exposure: "M_t, first-day median exposure of platform-labeled AIGC videos uploaded on day t"
+  rel_supply: "S_t = s_t^a / s_t^u, relative platform-labeled AIGC supply"
+  rel_engagement: "E_t, ratio of mean valid-view rates, platform-labeled AIGC over unlabeled content"
+  rel_exposure: "R_t, ratio of 31-day cumulative median exposures, platform-labeled AIGC over unlabeled content"
+  share_le_10: "w_k,t, share of newly uploaded platform-labeled AIGC videos with at most 10 exposures in 31 days"
+  share_11_to_100: "w_k,t, share in 11-100"
+  share_101_to_1000: "w_k,t, share in 101-1,000"
+  share_above_1000: "w_k,t, share above 1,000"
+  log_full_view_rate: "ln(e_t), log overall full-view rate"
+  log_valid_view_rate: "ln(e_t), log overall valid-view rate"
+  log_labeled_supply: "ln(s_t^a)"
+  log_unlabeled_supply: "ln(s_t^u)"
+  log_vertical_exposure: "log vertical-wide exposure, a control"
+  weekday: "day name"
+  month: "month number"
+  holiday: "synthetic holiday flag, not the platform calendar"
+  campaign: "synthetic campaign-window flag"

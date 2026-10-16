@@ -1,0 +1,112 @@
+# Knobs for the synthetic run. Column roles are documented in schema.yaml.
+# Change a list here to point a method at a different covariate set.
+
+seed: 20261016
+n_days: 180
+
+bootstrap_replications: 200
+bootstrap_replications_grid: 80
+block_length: 7
+hac_lags: 7
+
+granger_lag: 3
+granger_lag_grid: [1, 2, 3, 4]
+ardl_p: 1
+ardl_q: 1
+ardl_lag_grid: [1, 2]
+
+# Published detector calibration used only as the phi scenario (SI-5).
+phi_flag_rate: 0.242
+phi_tpr: 0.693
+phi_fpr: 0.0
+phi_max: 0.474
+phi_grid: [0.0, 0.2, 0.474]
+
+# Same-arm neighbors in the Abadie-Imbens variance. At most five.
+imbens_neighbors: 5
+
+duration_caliper_main: 3.0
+duration_calipers: [2.0, 3.0, 5.0]
+
+sizes:
+  creator: 1200
+  consumer: 2400
+  video: 1200
+  algorithm: 1200
+
+time_exog: [weekday, month, holiday, campaign, log_vertical_exposure]
+
+integration_series:
+  - labeled_supply
+  - unlabeled_supply
+  - first_day_median_exposure
+  - rel_supply
+  - rel_engagement
+  - rel_exposure
+  - share_le_10
+  - share_11_to_100
+  - share_101_to_1000
+  - share_above_1000
+  - log_full_view_rate
+  - log_valid_view_rate
+
+tasks:
+  creator:
+    figure: "Fig. 1(c)"
+    focal: "AIGC-adopting"
+    comparison: "non-adopting"
+    exact: [category, city, brand_tier]
+    numeric: [uploads_14d, uploads_60d, plays_14d, plays_60d, watch_time_14d, watch_time_60d, followers]
+    outcomes: [video_volume, total_valid_views, total_full_views]
+    caliper: {}
+  consumer:
+    figure: "Fig. 1(d)"
+    focal: "platform-labeled AIGC"
+    comparison: "unlabeled content"
+    exact: [gender, city, category, time_of_day, upload_week]
+    numeric:
+      - age
+      - duration_seconds
+      - plays_labeled_14d
+      - plays_labeled_60d
+      - plays_unlabeled_14d
+      - plays_unlabeled_60d
+      - watch_time_labeled_14d
+      - watch_time_labeled_60d
+      - watch_time_unlabeled_14d
+      - watch_time_unlabeled_60d
+      - creator_uploads_14d
+      - creator_uploads_60d
+      - creator_plays_14d
+      - creator_plays_60d
+      - creator_watch_time_14d
+      - creator_watch_time_60d
+      - creator_followers
+    outcomes: [early_retention, valid_view_rate, full_view_rate, view_fraction]
+    caliper:
+      duration_seconds: 3.0
+  video:
+    figure: "Fig. 2(a)"
+    focal: "platform-labeled AIGC"
+    comparison: "unlabeled content"
+    exact: [category, city, upload_week]
+    numeric: [uploads_14d, uploads_60d, plays_14d, plays_60d, watch_time_14d, watch_time_60d, followers]
+    outcomes: [exposure_31d, days_to_90]
+    caliper: {}
+  algorithm:
+    figure: "Fig. 2(e)(f)"
+    focal: "population-feedback"
+    comparison: "individual-feedback"
+    exact: [city, gender]
+    numeric:
+      - age
+      - plays_labeled_14d
+      - plays_labeled_60d
+      - plays_unlabeled_14d
+      - plays_unlabeled_60d
+      - watch_time_labeled_14d
+      - watch_time_labeled_60d
+      - watch_time_unlabeled_14d
+      - watch_time_unlabeled_60d
+    outcomes: [labeled_exposure_share, share_week_1, share_week_2, share_week_4, share_week_8]
+    caliper: {}

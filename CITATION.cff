@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "Scale over Engagement: code and synthetic data"
+message: "A Zenodo DOI will replace this placeholder at acceptance."
+type: software
+license: MIT
+repository-code: "https://example.org/scale-over-preference"
+abstract: >-
+  Synthetic-data implementation of the matching, rank, Granger, level-OLS,
+  and ARDL pipeline for the manuscript. The synthetic sample checks that
+  the pipeline runs. It does not reproduce the manuscript estimates.

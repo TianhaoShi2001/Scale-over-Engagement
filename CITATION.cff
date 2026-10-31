@@ -1,10 +1,45 @@
 cff-version: 1.2.0
 title: "Scale over Engagement: code and synthetic data"
-message: "A Zenodo DOI will replace this placeholder at acceptance."
+message: "If you use this software, please cite it using the metadata from this file."
 type: software
 license: MIT
-repository-code: "https://example.org/scale-over-preference"
+version: 1.0.0
+repository-code: "https://github.com/TianhaoShi2001/Scale-over-Engagement"
+url: "https://github.com/TianhaoShi2001/Scale-over-Engagement"
 abstract: >-
   Synthetic-data implementation of the matching, rank, Granger, level-OLS,
   and ARDL pipeline for the manuscript. The synthetic sample checks that
   the pipeline runs. It does not reproduce the manuscript estimates.
+authors:
+  - family-names: Shi
+    given-names: Tianhao
+    affiliation: "University of Science and Technology of China"
+  - family-names: Zhang
+    given-names: Yang
+    affiliation: "National University of Singapore"
+  - family-names: Zhao
+    given-names: Xiaoyan
+    affiliation: "National University of Singapore"
+  - family-names: Zhu
+    given-names: Fengbin
+    affiliation: "National University of Singapore"
+  - family-names: Lei
+    given-names: Chenyi
+    affiliation: "Kuaishou Technology"
+  - family-names: Li
+    given-names: Han
+    affiliation: "Kuaishou Technology"
+  - family-names: Ou
+    given-names: Wenwu
+    affiliation: "Kuaishou Technology"
+  - family-names: Song
+    given-names: Yang
+    affiliation: "Kuaishou Technology"
+  - family-names: Zhang
+    given-names: Yongdong
+    affiliation: "University of Science and Technology of China"
+    email: zhyd73@ustc.edu.cn
+  - family-names: Feng
+    given-names: Fuli
+    affiliation: "University of Science and Technology of China"
+    email: fengfl@ustc.edu.cn

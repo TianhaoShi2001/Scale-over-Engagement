@@ -96,4 +96,4 @@ Platform logs are proprietary and are not in this repository. `data/DATA.md` sta
 
 ## License and citation
 
-MIT, see `LICENSE`. At acceptance, cite the Zenodo record named in the manuscript Code availability statement. `CITATION.cff` is the placeholder until that DOI exists.
+MIT, see `LICENSE`. To cite this repository, use `CITATION.cff`.

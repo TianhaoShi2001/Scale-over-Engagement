@@ -97,3 +97,8 @@ Platform logs are proprietary and are not in this repository. `data/DATA.md` sta
 ## License and citation
 
 MIT, see `LICENSE`. To cite this repository, use `CITATION.cff`.
+
+## Online Material
+
+The manuscript Online Material (O1--O3) is in [Online_material.pdf](Online_material.pdf).
+
